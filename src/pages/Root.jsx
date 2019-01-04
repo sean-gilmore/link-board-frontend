@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import LinkList from '../components/LinkList';
 
 type Props = {
 
@@ -8,7 +9,9 @@ type Props = {
 class Root extends React.Component<Props> {
   render () {
     return ( 
-      <span>Test</span>
+      <div className='root'>
+        <LinkList />
+      </div>
     );
   }
 }
