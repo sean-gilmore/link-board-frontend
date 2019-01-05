@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 type Props = {
-  formSubmit: (name: string, link: string, description: string) => Any<void>
+  formSubmit: (link: string, description: string) => Any<void>
 };
 
 class LinkInput extends React.Component<Props> {
@@ -16,26 +16,29 @@ class LinkInput extends React.Component<Props> {
     }
   }
 
-  setLinkValue = (event) => {
+  setLinkValue = (event: SyntheticInputEvent<T>) => {
     this.setState({
       link: event.target.value
     });
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = (event: SyntheticEvent<T>) => {
     event.preventDefault();
-    const { link } = this.state;
 
-    this.props.formSubmit(link, link, link);
+    const { link } = this.state;
+    this.setState({
+      link: ''
+    });
+
+    this.props.formSubmit(link, '');
   } 
 
 
   render() {
     const { link } = this.state;
-    const { formSubmit } = this.props;
 
     return (
-    <form onSubmit={this.handleSubmit}>
+    <form className='link-input' onSubmit={this.handleSubmit}>
       <h3>Create Link</h3>
       <input value={link} onChange={this.setLinkValue} />
     </form>
