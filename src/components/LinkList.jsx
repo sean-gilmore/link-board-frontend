@@ -1,19 +1,21 @@
 // @flow
 import * as React from 'react';
 import LinkInput from './LinkInput';
+import LinkItem from './LinkItem';
 
 type Props = {
 };
 
-type State = {
-  linkItems?: Array<{
-    name: string,
-    link: string,
-    description: string
-  }>
+type LinkItemType = {
+  link: string,
+  description: string
 };
 
-class LinkList extends React.Component<Props> {
+type State = {
+  linkItems?: Array<LinkItemType>
+};
+
+class LinkList extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -22,10 +24,10 @@ class LinkList extends React.Component<Props> {
     }
   }
 
-  addLinkItem = (name: string, link: string, description: string) => {
+  addLinkItem = ( link: string, description: string ) => {
     const newItems = [
       ...this.state.linkItems,
-      {name: name, link: link, description: description}
+      { link: link, description: description }
     ];
     this.setState({
       linkItems: newItems
@@ -33,14 +35,17 @@ class LinkList extends React.Component<Props> {
   }
 
   render() {
-    const { linkItems } = this.props;
+    const { linkItems } = this.state;
     return (
-      <section>
+      <section className='link-list'>
         <LinkInput formSubmit={this.addLinkItem} />
-        <ul>
-          {linkItems.length > 0 && linkItems.map((item, key: number) => (
-            <LinkItem key={key} />
-          ))}
+        <ul className='link-list__link-wrapper'>
+          {
+            linkItems.length > 0 &&
+            linkItems.map((item: LinkItemType, key: number) => (
+              <LinkItem key={key} link={item.link} />
+            ))
+          }
         </ul>
       </section>
     )
