@@ -2,15 +2,11 @@
 import * as React from 'react';
 import LinkInput from './LinkInput';
 import LinkItem from './LinkItem';
+import type { LinkItemType } from '../types';
 
 type Props = {
   name: string,
   linkItems?: Array<LinkItemType>
-};
-
-type LinkItemType = {
-  link: string,
-  description: string
 };
 
 type State = {
