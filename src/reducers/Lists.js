@@ -15,5 +15,9 @@ export function Lists(
       ],
       isFetching: false
     }
+    default:
+    return {
+      state
+    }
   }
 }
