@@ -2,6 +2,10 @@
 import * as React from 'react';
 import LinkList from '../components/LinkList';
 import Navigation from '../components/Navigation';
+import { Provider } from 'react-redux'
+import configureStore from '../configureStore'
+
+const store = configureStore()
 
 type Props = {
 
@@ -10,10 +14,12 @@ type Props = {
 class Root extends React.Component<Props> {
   render () {
     return ( 
-      <div className='root'>
-        <Navigation />
-        <LinkList />
-      </div>
+      <Provider store={store}>
+        <div className='root'>
+          <Navigation />
+          <LinkList />
+        </div>
+      </Provider>
     );
   }
 }

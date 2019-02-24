@@ -4,6 +4,8 @@ import LinkInput from './LinkInput';
 import LinkItem from './LinkItem';
 
 type Props = {
+  name: string,
+  linkItems?: Array<LinkItemType>
 };
 
 type LinkItemType = {
@@ -12,6 +14,7 @@ type LinkItemType = {
 };
 
 type State = {
+  name: string,
   linkItems?: Array<LinkItemType>
 };
 

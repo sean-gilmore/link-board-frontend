@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './assets/styles/index.scss';
-import Root from './pages/Root.jsx';
+import Root from './containers/Root.jsx';
 
 const App = () => (
   <Root/>
